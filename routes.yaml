@@ -1,0 +1,439 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  path: /
+  controller: App\Controller\DefaultController::index
+
+login:
+  path:   /login
+  controller: App\Controller\SecurityController:login
+
+shopping_cart:
+  path:   /shopping-cart/{store}/{ean}/{qty}
+  controller: App\Controller\DefaultController:shoppingCart
+
+logout:
+  path:   /logout
+
+change_store:
+  path: /change/store/{store}
+  controller: App\Controller\DefaultController:changeStore
+  methods: [GET]
+
+elastic_search:
+  path: /elastic/search
+  controller: App\Controller\ElasticSearchController:elasticSearch
+  methods: [GET|]
+
+input_search:
+  path: /view/search
+  controller: App\Controller\ElasticSearchController:inputSearch
+  methods: [GET|]
+
+quick_search:
+  path: /search/quick
+  controller: App\Controller\ElasticSearchController:quickSearch
+  methods: [POST]
+
+ #ARAMEX
+api_dropshipping_info:
+  path:     '/dropship/fetch'
+  controller: App\Controller\Procurement\ApiController:fetch_dropship_data
+  methods: [GET]
+
+ #ARAX POST/ CREATE WAYBILL
+api_dropshipping_waybill:
+  path:     '/dropship/waybill'
+  controller: App\Controller\Procurement\ApiController:create_waybill
+  methods: [POST] 
+
+
+download_report_file:
+  path: /download/{filename}
+  controller: App\Controller\Procurement\ReportsController:downloadFile
+  methods: [GET]
+show_download_report_file:
+  path: /show/download/{filename}
+  controller: App\Controller\Procurement\ReportsController:showDownloadFile
+  methods: [GET]
+reference:
+  prefix: '/reference'
+  resource: 'routes/reference.yaml'
+
+customer:
+  prefix: '/customer'
+  resource: 'routes/customer.yaml'
+
+
+voucher:
+  prefix: '/voucher'
+  resource: 'routes/voucher.yml'
+
+gift_card:
+  prefix: '/gift-card'
+  resource: 'routes/gift_card.yml'
+
+procurement:
+  prefix: '/procurement'
+  resource: 'routes/procurement.yaml'
+
+etl:
+  prefix: '/etl'
+  resource: 'routes/etl.yaml'
+
+cms:
+  prefix: '/cms'
+  resource: 'routes/cms.yaml'
+
+drop_shipping:
+  prefix: '/procurement/drop-shipping'
+  resource: 'routes/drop_shipping.yaml'
+
+ibsts:
+  prefix: '/procurement/ibst'
+  resource: 'routes/ibst.yaml'
+
+courier_convergex:
+  prefix: '/courier/convergex'
+  resource: 'routes/convergex.yaml'
+
+coupon:
+  prefix: '/coupon'
+  resource: 'routes/coupon.yaml'
+
+hades:
+  prefix: '/hades'
+  resource: 'routes/hades.yaml'
+
+api:
+  prefix: '/api'
+  resource: 'routes/api.yaml'
+
+sales:
+  prefix: '/sales'
+  resource: 'routes/sales.yaml'
+
+promotions:
+  prefix: '/promotions'
+  resource: 'routes/promotions.yaml'
+
+admincontrol:
+  prefix: '/admincms'
+  resource: 'routes/admincms.yaml'
+
+footcount:
+  prefix: '/footcount'
+  resource: 'routes/footcount.yaml'
+
+storedProd:
+  prefix: '/online'
+  resource: 'routes/storedProd.yaml'
+
+EmployeeData:
+  prefix: '/Employee'
+  resource: 'routes/Employee.yaml'
+
+EBStory:
+  prefix: '/'
+  resource: 'routes/MyEBstory.yaml'
+
+storeChecklist:
+  prefix: '/storeChecklist'
+  resource: 'routes/StoreChecklist.yaml'
+testSendSms:
+  path:   /test/sms/send
+  controller: App\Controller\TestController:testSendSms
+  methods: [GET]
+human_resource:
+  path: '/upload/new-jobs'
+  controller: App\Controller\HumanResourceController:index
+post_job:
+  methods: [POST]
+  path: /post/new-jobs
+  controller: App\Controller\HumanResourceController:store
+magic_numbers:
+  path: /upload/magic_numbers
+  methods: [GET]
+  controller: App\Controller\FinanceController:index
+registerFanaticsMemeber:
+  path: /register_fanatics_memeber/test
+  methods: [GET]
+  controller: App\Controller\HumanResourceController:registerFanaticsMemeber
+stockReturn:
+  path: /stock-return
+  methods: [GET]
+  controller: App\Controller\HumanResourceController:stockReturn
+stockReceive:
+  path: /stock-receive
+  methods: [GET]
+  controller: App\Controller\HumanResourceController:stockReceive
+storeStockRecieving:
+  methods: [POST]
+  path: /store/recieving
+  controller: App\Controller\HumanResourceController:storeStockReciving
+
+storeStockReturns:
+  methods: [POST]
+  path: /store/returns
+  controller: App\Controller\HumanResourceController:storeStockReturns
+redis_connector:
+    path: /redis-connector
+    controller: App\Controller\RedisConnectorController::index
+searchOrder:
+  methods: [GET]
+  path: /search/order
+  controller: App\Controller\HumanResourceController:searchOrder
+getOrder:
+  methods: [POST]
+  path: /get/order/recipients
+  controller: App\Controller\HumanResourceController:getOrders
+getBatches:
+  methods: [GET]
+  path: /get/batches
+  controller: App\Controller\HumanResourceController:recordBatches
+registerFanaticsMemeberForm:
+  path: /register_fanatics_member
+  methods: [GET]
+  controller: App\Controller\FanaticsController:showRegisterFanaticsMemberForm
+showLinkFanaticsMemberForm:
+  path: /link_fanatics_member
+  methods: [GET]
+  controller: App\Controller\FanaticsController:showLinkFanaticsMemberForm
+api_check_has_online_account:
+    path: /check-has-online-account
+    methods: [POST]
+    controller: App\Controller\FanaticsController:checkIfHasOnLineAccount
+createFanaticsMember:
+  methods: [POST]
+  path: /create/fanatics/member
+  controller: App\Controller\FanaticsController:storeInfomationInLoyaltyDatabase
+editReceiveBatch:
+  methods: [POST]
+  path: /edit/receive/batch
+  controller: App\Controller\HumanResourceController:editReceiveBatch
+  
+editReturnBatch:
+  methods: [POST]
+  path: /edit/return/batch
+  controller: App\Controller\HumanResourceController:editReturnBatch
+fixInterBranchStockTransfer:
+  path: /fix/inter-branch-stock-transfer
+  methods: [GET]
+  controller: App\Controller\HumanResourceController:fixInterBranchStockTransfer
+getIbstItems:
+  path: /get/ibst/items
+  methods: [POST]
+  controller: App\Controller\HumanResourceController:getIbstItems
+
+checkWordStockRecord:
+  path: /check/word-stock
+  methods: [POST]
+  controller: App\Controller\HumanResourceController:checkWordStockRecord
+
+
+showActivationLookUpForm:
+  path: /activation/lookup/
+  methods: [GET]
+  controller: App\Controller\FanaticsController:showActivationLookUpForm
+
+showContactList:
+  path: /manage/contacts
+  methods: [GET]
+  controller: App\Controller\ContactDetailsController:index
+showEmployee:
+  path: /manage/employee/{id}
+  methods: [GET]
+  controller: App\Controller\ContactDetailsController:showEmployee
+
+
+getTrainingVideos:
+  path: /training/videos
+  methods: [GET]
+  controller: App\Controller\TrainingVideosController:index
+editVideo:
+  path: /training/video/edit
+  methods: [GET]
+  controller: App\Controller\TrainingVideosController:edit
+showVideo:
+  path: /training/video/show
+  methods: [GET]
+  controller: App\Controller\TrainingVideosController:show
+createVideo:
+  path: /training/video/create
+  methods: [POST]
+  controller: App\Controller\TrainingVideosController:create
+getAll:
+  path: /training/videos/get-all
+  methods: [GET]
+  controller: App\Controller\TrainingVideosController:getAll
+whatsNewVideos:
+  path: /training/videos/showVideos
+  methods: [GET]
+  controller: App\Controller\TrainingVideosController:showVideos
+
+api_search_customer:
+    path: /activation/lookup/customer
+    methods: [POST]
+    controller: App\Controller\FanaticsController:getCustomerDetails
+
+showActivationForm:
+  path: /loyalty/activation
+  methods: [GET]
+  controller: App\Controller\FanaticsController:showActivationForm
+
+activateCustomerAccount:
+  path: /activate/customer/account
+  methods: [POST]
+  controller: App\Controller\FanaticsController:activateCustomerAccount
+UpdateCustomerPersonalDetails:
+  path: /update/customer/fanatics/personal/details
+  methods: [POST]
+  controller: App\Controller\Customer\FanaticsController:updatePersonalDetails
+UpdateCustomerSubscriptionDetails:
+  path: /update/customer/fanatics/subscription/details
+  methods: [POST]
+  controller: App\Controller\Customer\FanaticsController:updateSubscriptions
+UpdateCustomerCommunicationDetails:
+  path: /update/customer/fanatics/communication/details
+  methods: [POST]
+  controller: App\Controller\Customer\FanaticsController:updateCommunicationPreference
+
+getProducts:
+  path: /productdata
+  methods: [GET]
+  controller: App\Controller\ProductDataController:getProducts
+
+DashBoard:
+   prefix: '/OnlineDashBoard'
+   resource: 'routes/dashboard.yaml'
+
+  
+app_video_index:
+  path: trainingvideos/videos
+  controller : App\Controller\trainingvideos\VideoController::index
+  methods: [GET]
+
+app_video_search:
+  path: trainingvideos/video
+  controller : App\Controller\trainingvideos\VideoController::search
+  methods: [GET, POST]
+
+video_update_status:
+  path: trainingvideos/video/update/{status}/{id}
+  controller : App\Controller\trainingvideos\VideoController::updateStatus
+  methods: [GET, POST]
+
+app_video_new:
+  path: trainingvideos/video/form
+  controller : App\Controller\trainingvideos\VideoController::new
+  methods: [GET, POST]
+
+app_video_edit:
+  path: trainingvideos/video/{id}/edit
+  controller : App\Controller\trainingvideos\VideoController::edit
+  methods: [GET, POST]
+
+app_video_delete:
+  path: trainingvideos/video/{id}
+  controller : App\Controller\trainingvideos\VideoController::delete
+  methods: [POST]
+
+video_dashboard_category:
+  path: trainingvideos/video/update/{category_id}
+  controller : App\Controller\trainingvideos\VideoController::showShoesByStatus
+  methods: [GET, POST]
+
+video_app_category_index:
+  path: trainingvideos/category
+  controller : App\Controller\trainingvideos\CategoryController::index
+  methods: [GET]
+
+video_app_category_new:
+  path: trainingvideos/category/new
+  controller : App\Controller\trainingvideos\CategoryController::new
+  methods: [GET, POST]
+
+video_app_category_show:
+  path: trainingvideos/category/{id}
+  controller : App\Controller\trainingvideos\CategoryController::show
+  methods: [GET]
+
+video_app_category_edit:
+  path: trainingvideos/category/{id}/edit
+  controller : App\Controller\trainingvideos\CategoryController::edit
+  methods: [GET, POST]
+
+video_app_category_delete:
+  path: trainingvideos/category/{id}
+  controller : App\Controller\trainingvideos\CategoryController::delete
+  methods: [POST]
+
+voucher_app_register:
+  path: reissuevoucher/register
+  controller : App\Controller\reissuevoucher\RegistrationController::register
+  methods: [GET, POST]
+
+
+voucher_app_login:
+  path: reissuevoucher/login
+  controller : App\Controller\reissuevoucher\SecurityController::login
+  methods: [GET, POST]
+
+voucher_app_logout:
+  path: reissuevoucher/logout
+  controller : App\Controller\reissuevoucher\SecurityController::logout
+  methods: [GET, POST]
+
+app_voucher_index:
+  path: reissuevoucher/voucher
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::index
+  methods: [GET]
+
+edit_app_voucher_index:
+  path: reissuevoucher/voucher/admin
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::edit_index
+  methods: [GET]
+
+app_voucher_new:
+  path: reissuevoucher/voucher/form
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::new
+  methods: [GET, POST]
+
+app_voucher_search:
+  path: reissuevoucher/voucher/search
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::search
+  methods: [GET, POST]
+
+
+app_voucher_show:
+  path: reissuevoucher/voucher/{id}
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::show
+  methods: [GET]
+
+app_voucher_edit:
+  path: reissuevoucher/voucher/{id}/edit
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::edit
+  methods: [GET, POST]
+
+app_voucher_delete:
+  path: reissuevoucher/voucher/{id}
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::delete
+  methods: [GET, POST]
+
+voucher_update_status:
+  path: reissuevoucher/voucher/update/{status}/{id}
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::updateStatus
+  methods: [GET, POST]
+
+voucher_dashboard_status:
+  path: reissuevoucher/voucher/update/{status}
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::showVoucherReissueByStatus
+  methods: [GET, POST]
+
+edit_voucher_dashboard_status:
+  path: reissuevoucher/voucher/edit/update/{status}
+  controller : App\Controller\reissuevoucher\Voucher_reissueController::edit_showVoucherReissueByStatus
+  methods: [GET, POST]
+

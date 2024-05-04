@@ -1,0 +1,45 @@
+<h2 class="text-center"> <a class="btn btn-primary action-new" href="{{ path('email_voucher_add') }}">Add New Email Template</a></h2>
+
+
+<br />
+<table id="" class="display table-striped table-bordered" style="width:100%" >
+    <thead>
+    <tr>
+        <th><span>Created at</span></th>
+        <th><span>Description</span></th>
+        <th><span>Twig Template</span></th>
+        <th><span>Active from</span></th>
+        <th><span>Active to</span></th>
+
+        <th><span>Action</span></th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for item in list %}
+        <tr>
+            <td>{{ item.CreatedAt|date('d-m-y') }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.twigTemplate|striptags|slice(0, 55) }}</td>
+            <td>{{ item.ActiveFromDate|date('d-m-y') }}</td>
+            <td>{{ item.ActiveToDate|date('d-m-y') }}</td>
+            <td class="actions">
+
+                <a class="action-edit" href="{{ path('email_voucher_edit', {'id': item.id}) }}">Edit | </a>
+                <a class="action-edit" href="{{ path('email_voucher_buildForm', {'id': item.id}) }}">Send Test </a>
+
+                <a class="action-edit" href="{{ path('email_voucher_Clone', {'id': item.id}) }}">| Copy  Template </a>
+
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td class="no-results" colspan="5">
+                Sorry no records found.
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

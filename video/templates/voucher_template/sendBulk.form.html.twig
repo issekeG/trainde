@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Chiron Email Template{% endblock %}
+
+
+
+
+{% block body %}
+    <div class="center-wrapper">
+        <div class="content">
+            <section class="content-header ">
+                <div class="d-flex flex-row justify-content-between align-content-center w-100">
+                    <div class="content-header-title">
+                        <h1 class=" text-center">Send test mail</h1>
+                    </div>
+                </div>
+            </section>
+
+            <section id="main" class="content-body">
+
+
+                {{ form_start(form) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="row">
+                    <div class="col-12 ">
+                        <div class="form-group  field-text">
+                            {{ form_label(form.email) }}
+                            <div class="form-widget">
+                                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <small>{{ form_help(form.email) }}</small>
+                            <div class="form-error">
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+</div>
+        </section>
+        <section class="content-footer">
+            <div class="form-actions">
+
+                <a class="btn btn-link pr-0 action-list" title="" href="{{ path('email_voucher_sendTest',{'id':id}) }}" target="_self">Send Test</a>
+
+                <a class="btn btn-link pr-0 action-list" title="" href="{{ path('emailvoucher') }}" target="_self">Back to listing</a>
+            </div>
+        </section>
+        {{ form_end(form) }}
+
+    </div>
+    </div>
+{% endblock %}

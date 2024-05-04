@@ -1,0 +1,71 @@
+{% extends 'reissuevoucher/base.html.twig' %}
+
+{% block title %}Voucher index{% endblock %}
+
+{% block body %}
+    <h1>Voucher index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reason</th>
+                <th>Name</th>
+                <th>IdNumber</th>
+                <th>GiftCardNumber</th>
+                <th>OriginalIssuingStore</th>
+                <th>DateOfPurchase</th>
+                <th>TimeOfPurchase</th>
+                <th>ValueLoadedOnCard</th>
+                <th>FurtherDetails</th>
+                <th>RequestedBy</th>
+                <th>RequestedDate</th>
+                <th>AuthorizedBy</th>
+                <th>sentOutBy</th>
+                <th>AuthorizedDate</th>
+                <th>NewEvoucherReference</th>
+                <th>NewEvoucherDate</th>
+                <th>CardLinkedTo</th>
+                <th>DeliveredTo</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voucher in vouchers %}
+            <tr>
+                <td>{{ voucher.id }}</td>
+                <td>{{ voucher.reason }}</td>
+                <td>{{ voucher.name }}</td>
+                <td>{{ voucher.idNumber }}</td>
+                <td>{{ voucher.giftCardNumber }}</td>
+                <td>{{ voucher.originalIssuingStore }}</td>
+                <td>{{ voucher.dateOfPurchase ? voucher.dateOfPurchase|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.timeOfPurchase ? voucher.timeOfPurchase|date('H:i:s') : '' }}</td>
+                <td>{{ voucher.valueLoadedOnCard }}</td>
+                <td>{{ voucher.furtherDetails }}</td>
+                <td>{{ voucher.requestedBy }}</td>
+                <td>{{ voucher.requestedDate ? voucher.requestedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.authorizedBy }}</td>
+                <td>{{ voucher.sentOutBy }}</td>
+                <td>{{ voucher.authorizedDate ? voucher.authorizedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.newEvoucherReference }}</td>
+                <td>{{ voucher.newEvoucherDate ? voucher.newEvoucherDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.cardLinkedTo }}</td>
+                <td>{{ voucher.deliveredTo }}</td>
+                <td>{{ voucher.status }}</td>
+                <td>
+                    <a href="{{ path('app_voucher_show', {'id': voucher.id}) }}">show</a>
+                    <a href="{{ path('app_voucher_edit', {'id': voucher.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="22">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voucher_new') }}">Create new</a>
+{% endblock %}

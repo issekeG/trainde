@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voucher bulk-Email Management{% endblock %}
+
+{% block body %}
+
+    <div class="center-wrapper">
+        <h1 class="text-center">Chiron Voucher bulk-Email management</h1>
+        <hr />
+        {{ include('/voucher_template/list.html.twig', {list: listOfEmailTemplates}, with_context = false) }}
+        <br />
+        <br />
+    </div>
+{% endblock %}

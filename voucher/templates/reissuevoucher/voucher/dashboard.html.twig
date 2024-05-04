@@ -1,0 +1,136 @@
+{% extends 'reissuevoucher/base.html.twig' %}
+
+{% block title %}New ReissueRequest{% endblock %}
+
+{% block sidebar %}
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{ path('app_voucher_index') }}">
+          <i class="bi bi-grid"></i>
+          <span>All status</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('voucher_dashboard_status', {'status': 'Pending'}) }}">
+          <i class="bi bi-wallet2"></i><span>Pending</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link "  href="{{ path('voucher_dashboard_status', {'status': 'Approved'}) }}">
+          <i class="bi bi-check2-square"></i>  <span>Approve</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{ path('voucher_dashboard_status', {'status': 'Rejected'}) }}">
+          <i class="bi bi-x-octagon"></i><span>Reject</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{ path('voucher_dashboard_status', {'status': 'sent out'}) }}">
+          <i class="bi bi-send-check"></i><span>sent out</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside>
+{% endblock %}
+
+{% block main %}
+  <main id="main" class="main">
+
+    <div class="col-12">
+      <div class=" recent-sales overflow-auto">
+
+        <div class="card-body">
+
+          <table class="table table-borderless datatable">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Reason</th>
+              <th scope="col">Name</th>
+              <th scope="col">Id_Number</th>
+              <th scope="col">Gift_CardNumber</th>
+              <th scope="col">Original_Issuing_Store</th>
+              <th scope="col">Date_Of_Purchase</th>
+              <th scope="col">Time_Of_Purchase</th>
+              <th scope="col">Value_Loaded_On_Card</th>
+              <th scope="col">Further_Details</th>
+              <th scope="col">Requested_By</th>
+              <th scope="col">Requested_Date</th>
+              <th scope="col">Authorized_By</th>
+              <th scope="col">Sentout_by</th>
+              <th scope="col">Authorized_Date</th>
+              <th scope="col">New_Evoucher_Reference</th>
+              <th scope="col">New_Evoucher_Date</th>
+              <th scope="col">CardLinked_To</th>
+              <th scope="col">Delivered_To</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for voucher in vouchers %}
+              <tr>
+                <td >{{ voucher.id }}</td>
+                <td>{{ voucher.reason }}</td>
+                <td>{{ voucher.name }}</td>
+                <td>{{ voucher.idNumber }}</td>
+                <td>{{ voucher.giftCardNumber }}</td>
+                <td>{{ voucher.originalIssuingStore }}</td>
+                <td>{{ voucher.dateOfPurchase ? voucher.dateOfPurchase|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.timeOfPurchase ? voucher.timeOfPurchase|date('H:i:s') : '' }}</td>
+                <td>{{ voucher.valueLoadedOnCard }}</td>
+                <td>{{ voucher.furtherDetails }}</td>
+                <td>{{ voucher.requestedBy }}</td>
+                <td>{{ voucher.requestedDate ? voucher.requestedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.authorizedBy }}</td>
+                <td>{{ voucher.sentOutBy }}</td>
+                <td>{{ voucher.authorizedDate ? voucher.authorizedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.newEvoucherReference }}</td>
+                <td>{{ voucher.newEvoucherDate ? voucher.newEvoucherDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voucher.cardLinkedTo }}</td>
+                <td>{{ voucher.deliveredTo }}</td>
+
+                {% if 'approv' in voucher.status|lower %}
+
+                <td><a ><span class="badge bg-success text-white">{{ voucher.status }}</span></a></td>
+
+                {% elseif 'pend' in voucher.status|lower|lower %}
+                  <td><a ><span class="badge bg-warning text-white">{{ voucher.status }}</span></a></td>
+                {% elseif 'rejec' in voucher.status|lower %}
+                  <td><a><span class="badge bg-danger text-white">{{ voucher.status }}</span></a></td>
+                {% elseif 'sent' in voucher.status|lower %}
+                  <td><a ><span class="badge bg-info text-white">{{ voucher.status }}</span></a></td>
+
+
+                {% endif %}
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="22">no records found</td>
+              </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </main>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Chiron Email Template{% endblock %}
+
+
+
+
+{% block body %}
+    <div class="center-wrapper">
+        <div class="content">
+            <section class="content-header ">
+                <div class="d-flex flex-row justify-content-between align-content-center w-100">
+                    <div class="content-header-title">
+                        <h1 class=" text-center">Email template</h1>
+                    </div>
+                </div>
+            </section>
+
+            <section id="main" class="content-body">
+
+
+                {{ form_start(form) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="row">
+                    <div class="col-12 ">
+                        <div class="form-group  field-text">
+                            {{ form_label(form.description) }}
+                            <div class="form-widget">
+                                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <small>{{ form_help(form.description) }}</small>
+                            <div class="form-error">
+                                {{ form_errors(form.description) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 ">
+                        <div class="form-group  field-text">
+                            {{ form_label(form.twigTemplate) }}
+                            <div class="form-widget">
+                                {{ form_widget(form.twigTemplate, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <small>{{ form_help(form.twigTemplate) }}</small>
+                            <div class="form-error">
+                                {{ form_errors(form.twigTemplate) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 ">
+                        <div class="form-group  field-text">
+                            {{ form_label(form.active_from_date) }}
+                            <div class="form-widget">
+                                {{ form_widget(form.active_from_date, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <small>{{ form_help(form.active_from_date) }}</small>
+                            <div class="form-error">
+                                {{ form_errors(form.active_from_date) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="col-12 ">
+                    <div class="form-group  field-text">
+                        {{ form_label(form.active_to_date) }}
+                        <div class="form-widget">
+                            {{ form_widget(form.active_to_date, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <small>{{ form_help(form.active_to_date) }}</small>
+                        <div class="form-error">
+                            {{ form_errors(form.active_to_date) }}
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+            </section>
+            <section class="content-footer">
+                <div class="form-actions">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary action-save'}}) }}
+                    <a class="btn btn-link pr-0 action-list" title="" href="{{ path('emailvoucher') }}" target="_self">Back to listing</a>
+                </div>
+            </section>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}

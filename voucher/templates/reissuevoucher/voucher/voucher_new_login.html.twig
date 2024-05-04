@@ -1,0 +1,21 @@
+{% extends 'reissuevoucher/base.html.twig' %}
+
+{% block title %}Edit ReissueRequest{% endblock %}
+
+{% block navName %}Reissue Voucher Form{% endblock %}
+
+{% block togglesidebar %}
+{% endblock %}
+
+{% block search %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+{% block main %}
+
+
+    {{ include('reissuevoucher/voucher/_edit_form.html.twig', {'button_label': 'Save'}) }}
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+<main>
+    <div class="container pb-0" >
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center" >
+            <div class="container  pt-5 mt-5">{# ajouter pt-5 et mt-5 #}
+                <div class="row justify-content-center">
+
+                    <div class="col-md-10  flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center">
+                            <a class="logo d-flex align-items-center w-auto">
+                                <span class="d-none d-lg-block">Form</span>
+                            </a>
+                        </div>
+
+                        <div class="card">
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+                            <div class="px-4 row mt-5" style="margin-bottom: 0">
+
+
+                                <div>
+                                    <p> </p>
+                                </div>
+                                <label class="form-label mt-1">Reason : </label>
+
+                                <div class="col-12 row justify-content-center align-content-center mb-4 mt-0">
+
+                                    <div class="form-group col-md-2">
+                                        {{ form_row(form.reason.3, {'label_attr': {'class': 'form-check-label custom-class-4 pr-3'}}) }}
+
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {{ form_row(form.reason.2, {'label_attr': {'class': 'form-check-label custom-class-2 pr-3'}}) }}
+
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {{ form_row(form.reason.1, {'label_attr': {'class': 'form-check-label custom-class-2 pr-3'}}) }}
+
+                                    </div>
+
+                                    <div class="form-group col-md-2">
+                                        {{ form_row(form.reason.0, {'label_attr': {'class': 'form-check-label custom-class-1 pr-3'}}) }}
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.name) }}
+                                    <div class="invalid-feedback">Please, enter name!</div>
+                                </div>
+
+                                <div class="col-12  mb-4">
+                                    {{ form_row(form.idNumber) }}
+                                    <div class="invalid-feedback">Please enter an ID/Passport Number :</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.giftCardNumber) }}
+                                    <div class="invalid-feedback">Please enter giftCardNumber !</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.originalIssuingStore) }}
+                                    <div class="invalid-feedback">Please enter Original Issuing Store !</div>
+                                </div>
+
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.dateOfPurchase) }}
+                                    <div class="invalid-feedback">Please enter Date of Purchase !</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.valueLoadedOnCard) }}
+                                    <div class="invalid-feedback">Please enter Value Loaded on Card !</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.furtherDetails) }}
+                                    <div class="invalid-feedback">Please enter Any Further Details !</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.requestedBy) }}
+                                    <div class="invalid-feedback">Please enter Requested By !</div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.requestedDate) }}
+                                    <div class="invalid-feedback">Please enter Requested Date !</div>
+                                </div>
+
+
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.newEvoucherReference) }}
+                                    <div class="invalid-feedback">Please enter New eVoucher Reference !</div>
+                                </div>
+
+
+                                <div class="col-12 mb-4">
+                                    {{ form_row(form.cardLinkedTo) }}
+                                    <div class="invalid-feedback">Please enter Card Linked To !</div>
+                                </div>
+
+
+                                <div class="col-12 mb-5">
+                                    {{ form_row(form.deliveredTo) }}
+                                    <div class="invalid-feedback">Please enter Delivered To !</div>
+                                </div>
+
+                                <div class="row justify-content-center align-content-center">
+
+                                    <div class="form-group col-md-3 mb-5">
+                                        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>

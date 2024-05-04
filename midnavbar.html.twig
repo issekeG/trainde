@@ -1,0 +1,79 @@
+{% if app.session.has('cart') %}
+    {% set cart = app.session.get('cart') %}
+{% endif %}
+{% if app.session.has('what-new-title') %}
+    {% set title = app.session.get('what-new-title') %}
+{%  else %}
+    {% set title ="" %}
+{% endif %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand text-danger" href="{{ path('home') }}">
+         Pop-Up Chiron
+    </a>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">IBSTs</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">IBSTs</div>
+                    <a class="dropdown-item" href="{{ path('ibst_dashboard') }}">Dashboard</a>
+                    <a class="dropdown-item" href="{{ path('ibst_search_get') }}">Lookup</a>
+                    <a class="dropdown-item" href="{{ path('ibst_stock_lookup') }}">New Request</a>
+                    <a class="dropdown-item" href="{{ path('ibst_scan_get',{'action':'dispatch'}) }}">Dispatch</a>
+                    <a class="dropdown-item" href="{{ path('ibst_scan_get',{'action':'receive'}) }}">Receive</a>
+                    <a class="dropdown-item" href="{{ path('ibst_scan_get',{'action':'return-out'}) }}">Return to
+                        Store</a>
+                    <a class="dropdown-item" href="{{ path('ibst_scan_get',{'action':'return-in'}) }}">Receive Returned
+                        IBST</a>
+                    <a class="dropdown-item" href="{{ path('ibst_manage_declines') }}">Manage Declines</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-header">Shipping</div>
+                    <a class="dropdown-item" href="{{ url('convergex_waybill_print') }}">Print Convergex Waybill</a>
+                    <a class="dropdown-item" href="{{ path('drop_shipping_show_manifest') }}">Create Manifest</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-header">Bulk IBSTs</div>
+                    {% if is_granted('ROLE_BULK_IBST') %}
+                        <a class="dropdown-item" href="{{ path('ibst_bulk_upload') }}">Upload Bulk IBST</a>
+                    {% endif %}
+                    <!---
+                    <a class="dropdown-item" href="{{ path('ibst_recall_stock',{'storeCode':'WS'}) }}">Recall
+                        Aged Stock</a>---->
+                    <a class="dropdown-item" href="{{ path('ibst_recall_stock',{'storeCode':'HW'}) }}">Recall
+                        Sales Stock</a>
+                </div>
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav">
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="authDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <span
+                            style="font-size: smaller">{{ app.session.get('userName') }}<br/>({{ app.session.get('storeName') }})</span>
+                        <span
+                            class="fa fa-user"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="authDropdown">
+                        <a class="dropdown-item" href="{{ path('app_change_store_list') }}">Change Store</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('logout' ) }}">Log out</a>
+                    </div>
+
+
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('login') }}">Log in</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
